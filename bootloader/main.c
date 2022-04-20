@@ -37,7 +37,7 @@ int main() {
 	bit_set(GPIOB->CRL, GPIO_CRL_CNF0_0);
 	bit_clear(GPIOB->CRL, GPIO_CRL_CNF0_1);
 
-	// If B2 (BOOT1) is HIGH then go into HID bootloader...
+	// If B0 (BOOT1) is HIGH then go into HID bootloader...
 	if(!(GPIOB->IDR & GPIO_IDR_IDR0)) {
 		USB_Init(HIDUSB_EPHandler, HIDUSB_Reset);
 	} else {

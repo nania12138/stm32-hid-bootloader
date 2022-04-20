@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
 	FILE *firmware_file = NULL;
 	int error = 0;
 
-	setbuf(stdout, NULL);
+	setbuf(stdout, NULL);	//TODO:Need to disable in windows
 
 	printf("HID-Flash v1.4a - STM32 HID Bootloader Flash Tool\n");
 	printf("(c) 04/2018 - Bruno Freitas - http://www.brunofreitas.com/\n\n");

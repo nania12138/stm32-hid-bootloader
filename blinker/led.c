@@ -21,21 +21,21 @@
 #include "bitwise.h"
 
 void led_off() {
-	GPIOC->BSRR = GPIO_BSRR_BS13; // Set PC_13 HIGH (open drain)
+	GPIOC->BSRR = GPIO_BSRR_BS10; // Set PA_10 HIGH (open drain)
 }
 
 void led_on() {
-	GPIOC->BRR = GPIO_BRR_BR13; // Set PC_13 LOW (Reset)
+	GPIOC->BRR = GPIO_BRR_BR10; // Set PC_10 LOW (Reset)
 }
 
 void led_init() {
 	// I/O port C clock enable
-	bit_set(RCC->APB2ENR, RCC_APB2ENR_IOPCEN);
+	bit_set(RCC->APB2ENR, RCC_APB2ENR_IOPAEN);
 
-	// PC_13 output mode: General purpose output open drain (b01)
-	bit_set(GPIOC->CRH, GPIO_CRH_CNF13_0);
-	bit_clear(GPIOC->CRH, GPIO_CRH_CNF13_1);
+	// PA_10 output mode: General purpose output open drain (b01)
+	bit_set(GPIOA->CRH, GPIO_CRH_CNF10_0);
+	bit_clear(GPIOA->CRH, GPIO_CRH_CNF10_1);
 
-	// Set PC_13 to output
-	bit_set(GPIOC->CRH, GPIO_CRH_MODE13);  // PC_13 set as: Output mode, max speed 50 MHz.
+	// Set PA_10 to output
+	bit_set(GPIOA->CRH, GPIO_CRH_MODE10);  // PC_10 set as: Output mode, max speed 50 MHz.
 }
